@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Envio de emails com Docker</title>
+
+    <style>
+        form .inputs {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        form .inputs * {
+            width: 50%;
+            margin-bottom: 10px;
+            resize: none;
+        }
+        
+        form .inputs textarea {
+            height: 420px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Envio de emails com Docker, Python, Redis e Postgresql</h1>
+
+    <form action="http://localhost/api" method="POST">
+        <div class="inputs">
+            <input type="text" name="assunto" id="assunto">
+            <textarea name="mensagem" id="mensagem"></textarea>
+        </div>
+        <button type="submit">Send</button>
+    </form>
+</body>
+
+</html>
