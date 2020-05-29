@@ -16,8 +16,7 @@ services:
         networks: 
             - banco
         environment:
-            - POSTGRES_USER:'postgres'
-            - POSTGRES_PASSWORD:''
+            POSTGRES_HOST_AUTH_METHOD: "trust"
         ports:
             - 5432:5432
     frontend:
