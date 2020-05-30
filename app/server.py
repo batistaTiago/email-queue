@@ -1,5 +1,6 @@
 import psycopg2
 import redis
+import os
 import json
 from bottle import route, run, request, Bottle
 
@@ -8,9 +9,17 @@ from bottle import route, run, request, Bottle
 class Server(Bottle):
     def __init__(self):
         super().__init__()
-        dsn = 'dbname=email_sender user=postgres host=db'
-        self.fila = redis.StrictRedis(host='queue', port=6379, db=0) # queue -> container do redis 3.2
+        
+        # conexão com postgres
+        db_host = os.getenv('DB_HOST', 'db')
+        db_user = os.getenv('DB_USERNAME', 'postgres')
+        db_name = os.getenv('DB_DATABASE', 'email_sender')
+        dsn = f'dbname={db_name} user={db_user} host={db_host}'
         self.conn = psycopg2.connect(dsn)
+
+
+        redis_host = os.getenv('REDIS_HOST', 'queue')
+        self.fila = redis.StrictRedis(host=redis_host, port=6379, db=0) # queue -> container do redis 3.2
         self.initRoutes()
         
 

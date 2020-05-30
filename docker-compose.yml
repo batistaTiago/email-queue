@@ -18,6 +18,7 @@ services:
             - banco
         environment:
             POSTGRES_HOST_AUTH_METHOD: "trust"
+            DB_NAME: 'email_sender'
         ports:
             - 5432:5432
     frontend:
