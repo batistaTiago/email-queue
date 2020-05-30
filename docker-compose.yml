@@ -16,8 +16,6 @@ services:
             - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
         networks: 
             - banco
-        environment:
-            POSTGRES_HOST_AUTH_METHOD: "trust"
         ports:
             - 5432:5432
     frontend:

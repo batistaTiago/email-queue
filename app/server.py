@@ -1,9 +1,9 @@
+import json
+import os
+
 import psycopg2
 import redis
-import os
-import json
-from bottle import route, run, request, Bottle
-
+from bottle import Bottle, request, route, run
 
 
 class Server(Bottle):
@@ -13,8 +13,11 @@ class Server(Bottle):
         # conexão com postgres
         db_host = os.getenv('DB_HOST', 'db')
         db_user = os.getenv('DB_USERNAME', 'postgres')
-        db_name = os.getenv('DB_DATABASE', 'email_sender')
+        db_name = os.getenv('DB_NAME', 'email_sender')
         dsn = f'dbname={db_name} user={db_user} host={db_host}'
+
+        print(f'#################### conectando no banco {db_name}')
+
         self.conn = psycopg2.connect(dsn)
 
 

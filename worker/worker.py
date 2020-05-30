@@ -1,8 +1,9 @@
-import redis
 import json
 import os
-from time import sleep
 from random import randint
+from time import sleep
+
+import redis
 
 print('starting worker...')
 
